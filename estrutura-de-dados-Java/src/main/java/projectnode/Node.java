@@ -3,10 +3,12 @@ package projectnode;
 public class Node<T> {
 
     private T content;
-    private Node<T> nextNode;
+    private Node<T> nodeRef = null;
+
+    public Node(){
+    }
 
     public Node(T content){
-        this.nextNode = null;
         this.content = content;
     }
 
@@ -18,12 +20,12 @@ public class Node<T> {
         this.content = content;
     }
 
-    public Node<T> getNextNode() {
-        return nextNode;
+    public Node<T> getNodeRef() {
+        return nodeRef;
     }
 
-    public void setNextNode(Node<T> nextNode) {
-        this.nextNode = nextNode;
+    public void setNodeRef(Node<T> nodeRef) {
+        this.nodeRef = nodeRef;
     }
 
     @Override

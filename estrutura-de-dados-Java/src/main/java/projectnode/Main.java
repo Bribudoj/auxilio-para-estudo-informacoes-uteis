@@ -1,6 +1,5 @@
 package projectnode;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,17 +13,17 @@ public class Main {
         list.add(node1);
 
         Node<Object> node2 = new Node<>(list);
-        node1.setNextNode(node2);
+        node1.setNodeRef(node2);
 
         Node<Object> node3 = new Node<>("content Node3");
-        node2.setNextNode(node3);
+        node2.setNodeRef(node3);
 
         Node<Object> node4 = new Node<>(1);
-        node3.setNextNode(node4);
+        node3.setNodeRef(node4);
 
         System.out.println(node1);
-        System.out.println(node1.getNextNode());
-        System.out.println(node1.getNextNode().getNextNode());
-        System.out.println(node1.getNextNode().getNextNode().getNextNode());
+        System.out.println(node1.getNodeRef());
+        System.out.println(node1.getNodeRef().getNodeRef());
+        System.out.println(node1.getNodeRef().getNodeRef().getNodeRef());
     }
 }
