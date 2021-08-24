@@ -17,7 +17,7 @@ public class StackExample {
     }
 
     public Node pop(){
-        if(!isEmpty()){
+        if(!this.isEmpty()){
             Node noPopped = refNodeStackEntry;
             refNodeStackEntry = refNodeStackEntry.getNodeRef();
             return noPopped;
@@ -31,5 +31,23 @@ public class StackExample {
 
     private boolean isEmpty() {
         return refNodeStackEntry == null ? true : false;
+    }
+
+    @Override
+    public String toString() {
+        String returnString = "----------------\n";
+        returnString += "     Stack\n";
+        returnString += "----------------\n";
+
+        Node auxNode = refNodeStackEntry;
+
+        while (true){
+            if (auxNode != null){
+                returnString += "[Node{content=" + auxNode.getContent() +"}]\n";
+                auxNode = auxNode.getNodeRef();
+            }else break;
+        }
+        returnString += "================\n";
+        return returnString;
     }
 }
