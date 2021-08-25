@@ -1,4 +1,4 @@
-package santana.eduardo.stack;
+package projectnode;
 
 import projectnode.Node;
 

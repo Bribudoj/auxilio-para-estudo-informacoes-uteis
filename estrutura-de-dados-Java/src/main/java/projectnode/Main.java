@@ -1,7 +1,5 @@
 package projectnode;
 
-import santana.eduardo.stack.StackExample;
-
 import java.util.LinkedList;
 import java.util.List;
 
