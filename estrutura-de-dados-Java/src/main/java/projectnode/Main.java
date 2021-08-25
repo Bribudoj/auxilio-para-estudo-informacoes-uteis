@@ -1,7 +1,7 @@
 package projectnode;
 
-import java.util.LinkedList;
-import java.util.List;
+import javax.management.Query;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,43 +9,64 @@ public class Main {
         list.add("Queijo");
         list.add(23241);
 
-        Node<Object> node1 = new Node<>("content Node1");
-        list.add(node1);
+        NodeExample<Object> nodeExample1 = new NodeExample<>("content Node1");
+        list.add(nodeExample1);
 
-        Node<Object> node2 = new Node<>(list);
-        node1.setNodeRef(node2);
+        NodeExample<Object> nodeExample2 = new NodeExample<>(list);
+        nodeExample1.setNodeRef(nodeExample2);
 
-        Node<Object> node3 = new Node<>("content Node3");
-        node2.setNodeRef(node3);
+        NodeExample<Object> nodeExample3 = new NodeExample<>("content Node3");
+        nodeExample2.setNodeRef(nodeExample3);
 
-        Node<Object> node4 = new Node<>(1);
-        node3.setNodeRef(node4);
+        NodeExample<Object> nodeExample4 = new NodeExample<>(1);
+        nodeExample3.setNodeRef(nodeExample4);
 
-        System.out.println(node1);
-        System.out.println(node1.getNodeRef());
-        System.out.println(node1.getNodeRef().getNodeRef());
-        System.out.println(node1.getNodeRef().getNodeRef().getNodeRef());
+        System.out.println(nodeExample1);
+        System.out.println(nodeExample1.getNodeRef());
+        System.out.println(nodeExample1.getNodeRef().getNodeRef());
+        System.out.println(nodeExample1.getNodeRef().getNodeRef().getNodeRef());
 
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
         StackExample myStack = new StackExample();
 
-        myStack.push(new Node(1));
-        myStack.push(new Node(2));
-        myStack.push(new Node(3));
-        myStack.push(new Node(4));
-        myStack.push(new Node(5));
-        myStack.push(new Node(6));
-        myStack.push(new Node(7));
+        myStack.push(new NodeExample(1));
+        myStack.push(new NodeExample(2));
+        myStack.push(new NodeExample(3));
+        myStack.push(new NodeExample(4));
+        myStack.push(new NodeExample(5));
+        myStack.push(new NodeExample(6));
+        myStack.push(new NodeExample(7));
 
         System.out.println(myStack);
 
         myStack.pop();
         System.out.println(myStack);
 
-        myStack.push(new Node(7));
+        myStack.push(new NodeExample(7));
 
         System.out.println(myStack);
 
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
+        QueueExample<String> myqueue = new QueueExample<>();
+
+        myqueue.enqueue("first");
+        myqueue.enqueue("second");
+        myqueue.enqueue("third");
+        myqueue.enqueue("fourth");
+
+
+        System.out.println(myqueue);
+
+        System.out.println(myqueue.dequeue());
+
+        System.out.println(myqueue);
+
+        myqueue.enqueue("ultimo");
+
+
+        System.out.println(myqueue.first());
+        System.out.println(myqueue);
     }
 }

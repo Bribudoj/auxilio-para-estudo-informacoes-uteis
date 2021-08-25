@@ -1,21 +1,22 @@
 package projectnode;
 
-public class QueueExample {
+public class QueueExample<T> {
 
-    private Node refNodeQueueEntry;
+    private NodeExample refNodeExampleQueueEntry;
 
     public QueueExample() {
-        this.refNodeQueueEntry = null;
+        this.refNodeExampleQueueEntry = null;
     }
 
-    public void enqueue(Node newNode){
-        newNode.setNodeRef(refNodeQueueEntry);
-        refNodeQueueEntry = newNode;
+    public void enqueue(T object){
+        NodeExample newNode = new NodeExample(object);
+        newNode.setNodeRef(refNodeExampleQueueEntry);
+        refNodeExampleQueueEntry = newNode;
     }
 
-    public Node first(){
+    public T first(){
         if(!isEmpty()){
-            Node firstNode = refNodeQueueEntry;
+            NodeExample firstNode = refNodeExampleQueueEntry;
             while (true){
                 if(firstNode.getNodeRef() != null){
                     firstNode = firstNode.getNodeRef();
@@ -23,14 +24,15 @@ public class QueueExample {
                     break;
                 }
             }
+            return (T) firstNode.getContent();
         }
         return null;
     }
 
-    public Node dequeue(){
+    public T dequeue(){
         if(!isEmpty()){
-            Node firstNode = refNodeQueueEntry;
-            Node auxNode = refNodeQueueEntry;
+            NodeExample firstNode = refNodeExampleQueueEntry;
+            NodeExample auxNode = refNodeExampleQueueEntry;
             while (true){
                 if(firstNode.getNodeRef() != null){
                     auxNode = firstNode;
@@ -40,20 +42,22 @@ public class QueueExample {
                     break;
                 }
             }
-            return firstNode;
+            return (T) firstNode.getContent();
         }
         return null;
     }
 
     public boolean isEmpty(){
-        return refNodeQueueEntry == null ? true :  false;
+        return refNodeExampleQueueEntry == null ? true :  false;
     }
 
     @Override
     public String toString() {
-        String returnString = "\n";
-        Node auxNode = refNodeQueueEntry;
-        if (refNodeQueueEntry != null){
+        String returnString = "----------------\n";
+        returnString += "     Queue\n";
+        returnString += "----------------\n";
+        NodeExample auxNode = refNodeExampleQueueEntry;
+        if (refNodeExampleQueueEntry != null){
             while (true){
                 returnString += "[Node{content=" + auxNode.getContent() + "}]--->";
                 if (auxNode.getNodeRef() != null){

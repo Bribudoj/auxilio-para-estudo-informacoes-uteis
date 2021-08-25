@@ -1,14 +1,14 @@
 package projectnode;
 
-public class Node<T> {
+public class NodeExample<T> {
 
     private T content;
-    private Node<T> nodeRef = null;
+    private NodeExample<T> nodeExampleRef = null;
 
-    public Node(){
+    public NodeExample(){
     }
 
-    public Node(T content){
+    public NodeExample(T content){
         this.content = content;
     }
 
@@ -20,12 +20,12 @@ public class Node<T> {
         this.content = content;
     }
 
-    public Node<T> getNodeRef() {
-        return nodeRef;
+    public NodeExample<T> getNodeRef() {
+        return nodeExampleRef;
     }
 
-    public void setNodeRef(Node<T> nodeRef) {
-        this.nodeRef = nodeRef;
+    public void setNodeRef(NodeExample<T> nodeExampleRef) {
+        this.nodeExampleRef = nodeExampleRef;
     }
 
     @Override

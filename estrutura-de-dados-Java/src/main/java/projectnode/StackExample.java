@@ -1,36 +1,34 @@
 package projectnode;
 
-import projectnode.Node;
-
 public class StackExample {
 
-    private Node refNodeStackEntry;
+    private NodeExample refNodeExampleStackEntry;
 
     public StackExample() {
-        this.refNodeStackEntry = null;
+        this.refNodeExampleStackEntry = null;
     }
 
-    public void push(Node newNode){
-        Node auxReference = refNodeStackEntry;
-        refNodeStackEntry = newNode;
-        refNodeStackEntry.setNodeRef(auxReference);
+    public void push(NodeExample newNodeExample){
+        NodeExample auxReference = refNodeExampleStackEntry;
+        refNodeExampleStackEntry = newNodeExample;
+        refNodeExampleStackEntry.setNodeRef(auxReference);
     }
 
-    public Node pop(){
+    public NodeExample pop(){
         if(!this.isEmpty()){
-            Node noPopped = refNodeStackEntry;
-            refNodeStackEntry = refNodeStackEntry.getNodeRef();
+            NodeExample noPopped = refNodeExampleStackEntry;
+            refNodeExampleStackEntry = refNodeExampleStackEntry.getNodeRef();
             return noPopped;
         }
         return null;
     }
 
-    public Node top(){
-        return refNodeStackEntry;
+    public NodeExample top(){
+        return refNodeExampleStackEntry;
     }
 
     private boolean isEmpty() {
-        return refNodeStackEntry == null ? true : false;
+        return refNodeExampleStackEntry == null ? true : false;
     }
 
     @Override
@@ -39,12 +37,12 @@ public class StackExample {
         returnString += "     Stack\n";
         returnString += "----------------\n";
 
-        Node auxNode = refNodeStackEntry;
+        NodeExample auxNodeExample = refNodeExampleStackEntry;
 
         while (true){
-            if (auxNode != null){
-                returnString += "[Node{content=" + auxNode.getContent() +"}]\n";
-                auxNode = auxNode.getNodeRef();
+            if (auxNodeExample != null){
+                returnString += "[Node{content=" + auxNodeExample.getContent() +"}]\n";
+                auxNodeExample = auxNodeExample.getNodeRef();
             }else break;
         }
         returnString += "================\n";
