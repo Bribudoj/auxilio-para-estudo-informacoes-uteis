@@ -79,17 +79,17 @@ public class LinkedListExample<T> {
     }
 
     public String toString() {
-        String returnString = "----------------\n";
-        returnString += "     Lista\n";
-        returnString += "----------------\n";
+        StringBuilder myString = new StringBuilder();
+        myString.append("----------------\n     Lista\n----------------\n");
 
         NodeExample<T> auxNodeExample = entryRef;
 
         for (int i = 0; i < size(); i++){
-                returnString += "[No{conteudo=" + auxNodeExample.getContent() +"}]--->";
-                auxNodeExample = auxNodeExample.getNextNodeRef();
+            myString.append("[No{conteudo=").append(auxNodeExample.getContent()).append("}]--->");
+            auxNodeExample = auxNodeExample.getNextNodeRef();
         }
-        returnString += "null\n================\n";
-        return returnString;
+        myString.append("null\n================\n");
+
+        return myString.toString();
     }
 }
