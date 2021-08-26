@@ -1,7 +1,8 @@
 package projectnode;
 
-import javax.management.Query;
-import java.util.*;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,18 +14,18 @@ public class Main {
         list.add(nodeExample1);
 
         NodeExample<Object> nodeExample2 = new NodeExample<>(list);
-        nodeExample1.setNodeRef(nodeExample2);
+        nodeExample1.setNextNodeRef(nodeExample2);
 
         NodeExample<Object> nodeExample3 = new NodeExample<>("content Node3");
-        nodeExample2.setNodeRef(nodeExample3);
+        nodeExample2.setNextNodeRef(nodeExample3);
 
         NodeExample<Object> nodeExample4 = new NodeExample<>(1);
-        nodeExample3.setNodeRef(nodeExample4);
+        nodeExample3.setNextNodeRef(nodeExample4);
 
         System.out.println(nodeExample1);
-        System.out.println(nodeExample1.getNodeRef());
-        System.out.println(nodeExample1.getNodeRef().getNodeRef());
-        System.out.println(nodeExample1.getNodeRef().getNodeRef().getNodeRef());
+        System.out.println(nodeExample1.getNextNodeRef());
+        System.out.println(nodeExample1.getNextNodeRef().getNextNodeRef());
+        System.out.println(nodeExample1.getNextNodeRef().getNextNodeRef().getNextNodeRef());
 
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
@@ -68,5 +69,23 @@ public class Main {
 
         System.out.println(myqueue.first());
         System.out.println(myqueue);
+
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
+        LinkedListExample<String> myLinkedList = new LinkedListExample<>();
+
+        myLinkedList.add("teste1");
+        myLinkedList.add("teste2");
+        myLinkedList.add("teste3");
+        myLinkedList.add("teste4");
+
+        System.out.println(myLinkedList);
+        System.out.println(myLinkedList.get(0));
+        System.out.println(myLinkedList.get(1));
+        System.out.println(myLinkedList.get(2));
+        System.out.println(myLinkedList.get(3));
+
+        myLinkedList.remove(3);
+        System.out.println(myLinkedList);
     }
 }

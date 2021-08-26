@@ -1,34 +1,34 @@
 package projectnode;
 
-public class StackExample {
+public class StackExample<T> {
 
-    private NodeExample refNodeExampleStackEntry;
+    private NodeExample<T> entryReference;
 
     public StackExample() {
-        this.refNodeExampleStackEntry = null;
+        this.entryReference = null;
     }
 
-    public void push(NodeExample newNodeExample){
-        NodeExample auxReference = refNodeExampleStackEntry;
-        refNodeExampleStackEntry = newNodeExample;
-        refNodeExampleStackEntry.setNodeRef(auxReference);
+    public void push(NodeExample<T> newNodeExample){
+        NodeExample<T> auxReference = entryReference;
+        entryReference = newNodeExample;
+        entryReference.setNextNodeRef(auxReference);
     }
 
-    public NodeExample pop(){
+    public NodeExample<T> pop(){
         if(!this.isEmpty()){
-            NodeExample noPopped = refNodeExampleStackEntry;
-            refNodeExampleStackEntry = refNodeExampleStackEntry.getNodeRef();
+            NodeExample<T> noPopped = entryReference;
+            entryReference = entryReference.getNextNodeRef();
             return noPopped;
         }
         return null;
     }
 
-    public NodeExample top(){
-        return refNodeExampleStackEntry;
+    public NodeExample<T> top(){
+        return entryReference;
     }
 
     private boolean isEmpty() {
-        return refNodeExampleStackEntry == null ? true : false;
+        return entryReference == null;
     }
 
     @Override
@@ -37,12 +37,12 @@ public class StackExample {
         returnString += "     Stack\n";
         returnString += "----------------\n";
 
-        NodeExample auxNodeExample = refNodeExampleStackEntry;
+        NodeExample<T> auxNodeExample = entryReference;
 
         while (true){
             if (auxNodeExample != null){
                 returnString += "[Node{content=" + auxNodeExample.getContent() +"}]\n";
-                auxNodeExample = auxNodeExample.getNodeRef();
+                auxNodeExample = auxNodeExample.getNextNodeRef();
             }else break;
         }
         returnString += "================\n";

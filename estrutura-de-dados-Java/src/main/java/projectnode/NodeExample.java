@@ -3,13 +3,18 @@ package projectnode;
 public class NodeExample<T> {
 
     private T content;
-    private NodeExample<T> nodeExampleRef = null;
+    private NodeExample<T> nextNodeRef = null;
 
     public NodeExample(){
     }
 
     public NodeExample(T content){
         this.content = content;
+    }
+
+    public NodeExample(T content, NodeExample nextNodeRef){
+        this.content = content;
+        this.nextNodeRef = nextNodeRef;
     }
 
     public T getContent() {
@@ -20,12 +25,12 @@ public class NodeExample<T> {
         this.content = content;
     }
 
-    public NodeExample<T> getNodeRef() {
-        return nodeExampleRef;
+    public NodeExample<T> getNextNodeRef() {
+        return nextNodeRef;
     }
 
-    public void setNodeRef(NodeExample<T> nodeExampleRef) {
-        this.nodeExampleRef = nodeExampleRef;
+    public void setNextNodeRef(NodeExample<T> nextNodeRef) {
+        this.nextNodeRef = nextNodeRef;
     }
 
     @Override
@@ -33,5 +38,17 @@ public class NodeExample<T> {
         return "Node{" +
                 "content='" + content + '\'' +
                 '}';
+    }
+
+    public String toStringLinked() {
+        String str = "Node{" +
+                "content='" + content + '\'' +
+                '}';
+        if(nextNodeRef != null){
+            str += "->" + nextNodeRef.toString();
+        }else {
+            str += "-> null";
+        }
+        return str;
     }
 }

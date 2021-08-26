@@ -2,24 +2,24 @@ package projectnode;
 
 public class QueueExample<T> {
 
-    private NodeExample refNodeExampleQueueEntry;
+    private NodeExample<T> entryReference;
 
     public QueueExample() {
-        this.refNodeExampleQueueEntry = null;
+        this.entryReference = null;
     }
 
     public void enqueue(T object){
         NodeExample newNode = new NodeExample(object);
-        newNode.setNodeRef(refNodeExampleQueueEntry);
-        refNodeExampleQueueEntry = newNode;
+        newNode.setNextNodeRef(entryReference);
+        entryReference = newNode;
     }
 
     public T first(){
         if(!isEmpty()){
-            NodeExample firstNode = refNodeExampleQueueEntry;
+            NodeExample firstNode = entryReference;
             while (true){
-                if(firstNode.getNodeRef() != null){
-                    firstNode = firstNode.getNodeRef();
+                if(firstNode.getNextNodeRef() != null){
+                    firstNode = firstNode.getNextNodeRef();
                 }else {
                     break;
                 }
@@ -31,14 +31,14 @@ public class QueueExample<T> {
 
     public T dequeue(){
         if(!isEmpty()){
-            NodeExample firstNode = refNodeExampleQueueEntry;
-            NodeExample auxNode = refNodeExampleQueueEntry;
+            NodeExample firstNode = entryReference;
+            NodeExample auxNode = entryReference;
             while (true){
-                if(firstNode.getNodeRef() != null){
+                if(firstNode.getNextNodeRef() != null){
                     auxNode = firstNode;
-                    firstNode = firstNode.getNodeRef();
+                    firstNode = firstNode.getNextNodeRef();
                 }else {
-                    auxNode.setNodeRef(null);
+                    auxNode.setNextNodeRef(null);
                     break;
                 }
             }
@@ -48,7 +48,7 @@ public class QueueExample<T> {
     }
 
     public boolean isEmpty(){
-        return refNodeExampleQueueEntry == null ? true :  false;
+        return entryReference == null ? true :  false;
     }
 
     @Override
@@ -56,12 +56,12 @@ public class QueueExample<T> {
         String returnString = "----------------\n";
         returnString += "     Queue\n";
         returnString += "----------------\n";
-        NodeExample auxNode = refNodeExampleQueueEntry;
-        if (refNodeExampleQueueEntry != null){
+        NodeExample auxNode = entryReference;
+        if (entryReference != null){
             while (true){
                 returnString += "[Node{content=" + auxNode.getContent() + "}]--->";
-                if (auxNode.getNodeRef() != null){
-                    auxNode = auxNode.getNodeRef();
+                if (auxNode.getNextNodeRef() != null){
+                    auxNode = auxNode.getNextNodeRef();
                 }else {
                     returnString += null;
                     break;
