@@ -9,14 +9,14 @@ public class QueueExample<T> {
     }
 
     public void enqueue(T object){
-        NodeExample newNode = new NodeExample(object);
+        NodeExample<T> newNode = new NodeExample<>(object);
         newNode.setNextNodeRef(entryReference);
         entryReference = newNode;
     }
 
     public T first(){
         if(!isEmpty()){
-            NodeExample firstNode = entryReference;
+            NodeExample<T> firstNode = entryReference;
             while (true){
                 if(firstNode.getNextNodeRef() != null){
                     firstNode = firstNode.getNextNodeRef();
@@ -24,15 +24,15 @@ public class QueueExample<T> {
                     break;
                 }
             }
-            return (T) firstNode.getContent();
+            return firstNode.getContent();
         }
         return null;
     }
 
     public T dequeue(){
         if(!isEmpty()){
-            NodeExample firstNode = entryReference;
-            NodeExample auxNode = entryReference;
+            NodeExample<T> firstNode = entryReference;
+            NodeExample<T> auxNode = entryReference;
             while (true){
                 if(firstNode.getNextNodeRef() != null){
                     auxNode = firstNode;
@@ -42,32 +42,32 @@ public class QueueExample<T> {
                     break;
                 }
             }
-            return (T) firstNode.getContent();
+            return firstNode.getContent();
         }
         return null;
     }
 
     public boolean isEmpty(){
-        return entryReference == null ? true :  false;
+        return entryReference == null;
     }
 
     @Override
     public String toString() {
-        String returnString = "----------------\n";
-        returnString += "     Queue\n";
-        returnString += "----------------\n";
-        NodeExample auxNode = entryReference;
+        StringBuilder returnString = new StringBuilder();
+        returnString.append("----------------\n     Fila\n----------------\n");
+
+        NodeExample<T> auxNode = entryReference;
         if (entryReference != null){
             while (true){
-                returnString += "[Node{content=" + auxNode.getContent() + "}]--->";
+                returnString.append("[No{conteudo=").append(auxNode.getContent()).append("}]--->");
                 if (auxNode.getNextNodeRef() != null){
                     auxNode = auxNode.getNextNodeRef();
                 }else {
-                    returnString += null;
+                    returnString.append("null");
                     break;
                 }
             }
         }
-        return returnString;
+        return returnString.toString();
     }
 }

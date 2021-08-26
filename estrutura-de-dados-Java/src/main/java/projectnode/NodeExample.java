@@ -5,14 +5,11 @@ public class NodeExample<T> {
     private T content;
     private NodeExample<T> nextNodeRef = null;
 
-    public NodeExample(){
-    }
-
     public NodeExample(T content){
         this.content = content;
     }
 
-    public NodeExample(T content, NodeExample nextNodeRef){
+    public NodeExample(T content, NodeExample<T> nextNodeRef){
         this.content = content;
         this.nextNodeRef = nextNodeRef;
     }
@@ -45,7 +42,7 @@ public class NodeExample<T> {
                 "content='" + content + '\'' +
                 '}';
         if(nextNodeRef != null){
-            str += "->" + nextNodeRef.toString();
+            str += "->" + nextNodeRef;
         }else {
             str += "-> null";
         }

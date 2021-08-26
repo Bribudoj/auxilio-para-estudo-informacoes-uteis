@@ -8,17 +8,18 @@ public class StackExample<T> {
         this.entryReference = null;
     }
 
-    public void push(NodeExample<T> newNodeExample){
+    public void push(T object){
+        NodeExample<T> newNode = new NodeExample<>(object);
         NodeExample<T> auxReference = entryReference;
-        entryReference = newNodeExample;
+        entryReference = newNode;
         entryReference.setNextNodeRef(auxReference);
     }
 
     public NodeExample<T> pop(){
         if(!this.isEmpty()){
-            NodeExample<T> noPopped = entryReference;
+            NodeExample<T> poppedNode = entryReference;
             entryReference = entryReference.getNextNodeRef();
-            return noPopped;
+            return poppedNode;
         }
         return null;
     }
@@ -33,19 +34,18 @@ public class StackExample<T> {
 
     @Override
     public String toString() {
-        String returnString = "----------------\n";
-        returnString += "     Stack\n";
-        returnString += "----------------\n";
+        StringBuilder returnString = new StringBuilder();
+        returnString.append("----------------\n     Pilha\n----------------\n");
 
         NodeExample<T> auxNodeExample = entryReference;
 
         while (true){
             if (auxNodeExample != null){
-                returnString += "[Node{content=" + auxNodeExample.getContent() +"}]\n";
+                returnString.append("[Node{content=").append(auxNodeExample.getContent()).append("}]\n");
                 auxNodeExample = auxNodeExample.getNextNodeRef();
             }else break;
         }
-        returnString += "================\n";
-        return returnString;
+        returnString.append("================\n");
+        return returnString.toString();
     }
 }

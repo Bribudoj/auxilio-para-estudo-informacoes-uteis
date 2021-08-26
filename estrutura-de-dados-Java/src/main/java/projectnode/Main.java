@@ -29,30 +29,34 @@ public class Main {
 
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
-        StackExample myStack = new StackExample();
+        StackExample<Integer> myStack = new StackExample<>();
 
-        myStack.push(new NodeExample(1));
-        myStack.push(new NodeExample(2));
-        myStack.push(new NodeExample(3));
-        myStack.push(new NodeExample(4));
-        myStack.push(new NodeExample(5));
-        myStack.push(new NodeExample(6));
-        myStack.push(new NodeExample(7));
+        System.out.println(myStack.pop());
+        myStack.push(1);
+        myStack.push(2);
+        myStack.push(3);
+        myStack.push(4);
+        myStack.push(5);
+        myStack.push(6);
+        myStack.push(7);
 
         System.out.println(myStack);
 
         myStack.pop();
         System.out.println(myStack);
 
-        myStack.push(new NodeExample(7));
+        myStack.push(7);
 
         System.out.println(myStack);
+        System.out.println(myStack.top());
 
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
         QueueExample<String> myqueue = new QueueExample<>();
 
+
         myqueue.enqueue("first");
+        System.out.println(myqueue);
         myqueue.enqueue("second");
         myqueue.enqueue("third");
         myqueue.enqueue("fourth");
