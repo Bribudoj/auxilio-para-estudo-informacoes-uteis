@@ -78,6 +78,7 @@ public class Main {
 
         LinkedListExample<String> myLinkedList = new LinkedListExample<>();
 
+        System.out.println(myLinkedList);
         myLinkedList.add("teste1");
         myLinkedList.add("teste2");
         myLinkedList.add("teste3");

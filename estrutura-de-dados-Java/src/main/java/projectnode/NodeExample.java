@@ -4,6 +4,7 @@ public class NodeExample<T> {
 
     private T content;
     private NodeExample<T> nextNodeRef = null;
+    private NodeExample<T> previousNodeRef = null;
 
     public NodeExample(T content){
         this.content = content;
