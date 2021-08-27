@@ -31,6 +31,14 @@ public class NodeExample<T> {
         this.nextNodeRef = nextNodeRef;
     }
 
+    public NodeExample<T> getPreviousNodeRef() {
+        return previousNodeRef;
+    }
+
+    public void setPreviousNodeRef(NodeExample<T> previousNodeRef) {
+        this.previousNodeRef = previousNodeRef;
+    }
+
     @Override
     public String toString() {
         return "Node{" +

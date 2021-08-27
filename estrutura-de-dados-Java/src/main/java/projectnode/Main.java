@@ -92,5 +92,19 @@ public class Main {
 
         myLinkedList.remove(3);
         System.out.println(myLinkedList);
+
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
+        DoublyLinkedList<String> myDoublyLinkedList = new DoublyLinkedList<>();
+
+        myDoublyLinkedList.add("teste1");
+        myDoublyLinkedList.add("teste2");
+        myDoublyLinkedList.add("teste3");
+        myDoublyLinkedList.add("teste4");
+        System.out.println(myDoublyLinkedList);
+        myDoublyLinkedList.remove(3);
+        System.out.println(myDoublyLinkedList);
+        myDoublyLinkedList.add("teste5");
+        System.out.println(myDoublyLinkedList);
     }
 }
