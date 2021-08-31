@@ -95,10 +95,11 @@ public class Main {
 
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
-        DoublyLinkedList<String> myDoublyLinkedList = new DoublyLinkedList<>();
+        DoublyLinkedListExample<String> myDoublyLinkedList = new DoublyLinkedListExample<>();
 
         myDoublyLinkedList.add("teste1");
         myDoublyLinkedList.add("teste2");
+        myDoublyLinkedList.add(1,"teste7");
         myDoublyLinkedList.add("teste3");
         myDoublyLinkedList.add("teste4");
         System.out.println(myDoublyLinkedList);
@@ -106,5 +107,23 @@ public class Main {
         System.out.println(myDoublyLinkedList);
         myDoublyLinkedList.add("teste5");
         System.out.println(myDoublyLinkedList);
+
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
+        CircularLinkedListExample<String> myCircularLinkedList = new CircularLinkedListExample<>();
+
+        myCircularLinkedList.add("teste1");
+        myCircularLinkedList.add("teste2");
+        myCircularLinkedList.add("teste3");
+        myCircularLinkedList.add("teste4");
+        myCircularLinkedList.add("teste4");
+        System.out.println(myCircularLinkedList);
+        myCircularLinkedList.remove(3);
+        System.out.println(myCircularLinkedList);
+        myCircularLinkedList.add("teste5");
+        System.out.println(myCircularLinkedList);
+
+        System.out.println(myCircularLinkedList.get(1));
+
     }
 }

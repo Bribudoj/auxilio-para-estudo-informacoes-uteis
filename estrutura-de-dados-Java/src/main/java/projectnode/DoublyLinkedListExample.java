@@ -1,13 +1,13 @@
 package projectnode;
 
-public class DoublyLinkedList<T> {
+public class DoublyLinkedListExample<T> {
 
     private NodeExample<T> firstNode;
     private NodeExample<T> lastNode;
 
     private int listSize;
 
-    public DoublyLinkedList(){
+    public DoublyLinkedListExample(){
         firstNode = null;
         lastNode = null;
         this.listSize = 0;
