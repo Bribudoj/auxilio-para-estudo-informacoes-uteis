@@ -1,5 +1,7 @@
 package one.digitalinnovation;
 
+import java.util.TreeSet;
+
 public class BinaryTree<T extends Comparable<T>> {
 
     private BinNode<T> root;
@@ -32,7 +34,7 @@ public class BinaryTree<T extends Comparable<T>> {
     private void printInOrder(BinNode<T> current){
         if (current != null){
             printInOrder(current.getLeftNode());
-            System.out.println(current.getContent() + ", ");
+            System.out.print(current.getContent() + ", ");
             printInOrder(current.getRightNode());
         }
     }
@@ -46,7 +48,7 @@ public class BinaryTree<T extends Comparable<T>> {
         if (current != null){
             printPostOrder(current.getLeftNode());
             printPostOrder(current.getRightNode());
-            System.out.println(current.getContent() + ", ");
+            System.out.print(current.getContent() + ", ");
         }
     }
 
@@ -57,9 +59,84 @@ public class BinaryTree<T extends Comparable<T>> {
 
     private void printPreOrder(BinNode<T> current){
         if (current != null){
-            System.out.println(current.getContent() + ", ");
+            System.out.print(current.getContent() + ", ");
             printPreOrder(current.getLeftNode());
             printPreOrder(current.getRightNode());
         }
     }
+
+    public void remove(T content){
+        try {
+            BinNode<T> current = this.root;
+            BinNode<T> parent = null;
+            BinNode<T> child = null;
+            BinNode<T> aux = null;
+
+            while (current != null && !current.getContent().equals(content)){
+                parent = current;
+                if (content.compareTo(current.getContent()) < 0){
+                    current = current.getLeftNode();
+                }else {
+                    current = current.getRightNode();
+                }
+            }
+
+            if (current == null){
+                System.out.println("Conteudo nao encontrado. Bloco Try");
+            }
+
+            if (parent == null) {
+                if (current.getRightNode() == null) {
+                    this.root = current.getLeftNode();
+                } else if (current.getLeftNode() == null) {
+                    this.root = current.getRightNode();
+                }else {
+                    for(aux = current, child = current.getLeftNode();
+                        child.getRightNode() != null;
+                        aux = child, child = child.getLeftNode()
+                    ){
+                        if (child != current.getLeftNode()){
+                            aux.setRightNode(child.getLeftNode());
+                            child.setLeftNode(root.getLeftNode());
+                        }
+                    }
+                    child.setRightNode(root.getRightNode());
+                    root = child;
+                }
+            }else if(current.getRightNode() == null){
+                if(parent.getRightNode() == current){
+                    parent.setLeftNode(current.getLeftNode());
+                }else {
+                    parent.setRightNode(current.getLeftNode());
+                }
+            }else if(current.getLeftNode() == null){
+                if(parent.getRightNode() == current){
+                    parent.setLeftNode(current.getRightNode());
+                }else {
+                    parent.setRightNode(current.getRightNode());
+                }
+            }else {
+                for (
+                        aux = current, child = current.getLeftNode();
+                        child.getRightNode() != null;
+                        aux = child, child = child.getRightNode()
+                ){
+                    if (child != current.getLeftNode()){
+                        aux.setRightNode(child.getLeftNode());
+                        child.setLeftNode(current.getLeftNode());
+                    }
+                    child.setRightNode(current.getRightNode());
+                    if (parent.getLeftNode() == current){
+                        parent.setLeftNode(child);
+                    }else {
+                        parent.setRightNode(child);
+                    }
+                }
+
+            }
+        }catch (NullPointerException erro){
+            System.out.println("Conteudo nao encontrado. Bloco Catch");
+        }
+    }
+
 }
