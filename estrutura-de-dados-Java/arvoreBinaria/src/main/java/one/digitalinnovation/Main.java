@@ -2,6 +2,11 @@ package one.digitalinnovation;
 
 import one.digitalinnovation.model.Obj;
 
+import java.util.List;
+import java.util.Set;
+import java.util.Stack;
+import java.util.TreeSet;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -32,6 +37,9 @@ public class Main {
         myTree.printInOrder();
         myTree.printPreOrder();
         myTree.printPostOrder();
+
+        System.out.println(teste.equals(new Obj(29)));
+
 
     }
 }
